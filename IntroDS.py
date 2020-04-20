@@ -54,6 +54,12 @@ plt.xlabel('Notas')
 plt.ylabel("Quantidade")
 plt.show()
 
+#gerar boxplot de medias por filme
+plt.figure(figsize=(5,8))
+sns.boxplot(y=medias_por_filme)
+plt.show()
+
 #Gráfico boxplot comparando as notas dos 5 primeiros filmes
 sns.boxplot(x = "movieId", y = "rating", data= notas.query("movieId in [1,2,3,4,5]"))
 plt.show()
+
