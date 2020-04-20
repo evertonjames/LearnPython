@@ -1,6 +1,6 @@
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as pltgit
+import matplotlib.pyplot as plt
 
 uri = "https://raw.githubusercontent.com/alura-cursos/introducao-a-data-science/master/aula4.1/movies.csv"
 filmes = pd.read_csv(uri) #dataframe
@@ -47,8 +47,13 @@ print("Nota média por filme:")
 medias_por_filme = notas.groupby("movieId").mean().rating
 print(medias_por_filme.head())
 
-#medias_por_filme.plot(kind='hist')
-#plt.figure(figsize=(5,8)).
-#sns.boxplot(y=medias_por_filme)
+#Gerar histograma de notas
+sns.set() #seta os quadriculados ao fundo do gráfico
+plt.hist(notas['rating'])
+plt.xlabel('Notas')
+plt.ylabel("Quantidade")
+plt.show()
 
-
+#Gráfico boxplot comparando as notas dos 5 primeiros filmes
+sns.boxplot(x = "movieId", y = "rating", data= notas.query("movieId in [1,2,3,4,5]"))
+plt.show()
